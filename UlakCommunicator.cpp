@@ -1,5 +1,5 @@
 #include "Arduino.h"
-
+#include "ArduinoJson.h"
 
 
 class UlakCommunicator
@@ -28,9 +28,27 @@ public:
           if(Serial.available())
           {
             String message = Serial.readStringUntil('}');
-            Serial.println(message);
+            ProcessMessage(message);
           }
 
+        }
+        
+        void ProcessMessage(String message)
+        {
+          StaticJsonBuffer<200> jsonBuffer;
+
+          JsonObject& root = jsonBuffer.parseObject(message);
+
+          if (!root.success())
+          {
+            Serial.println("parseObject() failed");
+            return;
+          }
+          else
+        {
+           String value = root["Value"];
+           Serial.println(value);
+        }
         }
 
 };
