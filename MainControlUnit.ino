@@ -25,6 +25,9 @@ void loop() {
 
 
   communicator->CheckMessages();
+  
+  light->SetBrightness(communicator->GetBrightness());
+//  thruster->SetThrust(communicator->GetBrightness());
 //  delay(100);
 //  thruster->SetThrust(5);
   

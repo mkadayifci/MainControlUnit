@@ -6,12 +6,16 @@ class UlakCommunicator
 
 {
 private:
+        const static int BAUD_RATE = 9600;
+        const static int COM_PORT_TIMEOUT_IN_MS = 50;
+        
+        int lightBrightness=0;
 public:
 
 	UlakCommunicator()
         {
-            Serial.begin(9600);
-
+            Serial.begin(BAUD_RATE);
+            Serial.setTimeout(COM_PORT_TIMEOUT_IN_MS);
         }
 
 	~UlakCommunicator()
@@ -22,13 +26,16 @@ public:
         {
           //Serial.println(random(500)); 
         }
-        
+        int GetBrightness()
+        {
+          return lightBrightness;
+        }
         void CheckMessages()
         {
           if(Serial.available())
           {
             String message = Serial.readStringUntil('}');
-            ProcessMessage(message);
+            ProcessMessage(message + "}");
           }
 
         }
@@ -41,12 +48,13 @@ public:
 
           if (!root.success())
           {
-            Serial.println("parseObject() failed");
+            Serial.println(message);
             return;
           }
           else
         {
            String value = root["Value"];
+           lightBrightness =value.toInt();
            Serial.println(value);
         }
         }
