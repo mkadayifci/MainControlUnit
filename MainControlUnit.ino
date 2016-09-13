@@ -1,4 +1,5 @@
 #include "Servo.h"
+#include "AbraServoBase.cpp"
 #include "Light.cpp"
 #include "Thruster.cpp"
 
@@ -16,22 +17,17 @@ bool isStarted = false;
 
 void loop() {
 
-  if(!isStarted){
-    //thruster->setValue(-100);
-  isStarted = true;
+  thruster->SetThrust(100);
   
-  }
-delay(2000);
-thruster->setValue(0);
-
-///  light->setValue(50);
-//  Serial.println(light->readValue()); 
+//
+//  light->SetBrightness(50);
+//  Serial.println(light->GetBrightness()); 
 //  delay(1000);
-//  light->setValue(100);
-//  Serial.println(light->readValue()); 
+//  light->SetBrightness(100);
+//  Serial.println(light->GetBrightness()); 
 //  delay(1000);
-//  light->setValue(0);
-//  Serial.println(light->readValue()); 
+//  light->SetBrightness(0);
+//  Serial.println(light->GetBrightness()); 
 //  delay(1000);
   
 }

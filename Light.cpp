@@ -1,34 +1,29 @@
 #include "Arduino.h"
 #include "Servo.h"
+#include "AbraServoBase.cpp"
 
-class Light
-
+class Light:public AbraServoBase
 {
 private:
-        Servo lightReference;
-        int outputPort;
-        int currentValue;
 public:
+        static const int INIT_VALUE_IN_MICROSECONDS = 0 ;
 
-	Light(int outputPort){
-          this->outputPort=outputPort;
-          lightReference.attach(this->outputPort);
-          this->setValue(0);
+	Light(int outputPort):AbraServoBase(outputPort, INIT_VALUE_IN_MICROSECONDS)
+        {
         };
 
 	~Light(){};
-
-	int readValue(){
-            return this->currentValue;
+        
+        void SetBrightness(int value)
+        {
+          int convertedMicrosecondsValue = map(value,0,100,1100,1900);
+          this->WriteMicroseconds(convertedMicrosecondsValue);
         }
 
-        void setValue(int percentage){
-          
-            int convertedServoValue = map(percentage,0,100,1100,1900);
-            lightReference.writeMicroseconds(convertedServoValue);           
-            this->currentValue=convertedServoValue;
+        int GetBrightness()
+        {
+          return this->ReadMicroseconds();
         }
-
 };
 
 
