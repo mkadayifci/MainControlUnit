@@ -13,6 +13,7 @@ public:
 	Thruster(int outputPort){
           this->outputPort=outputPort;
           thrusterReference.attach(this->outputPort);
+          this->setValue(0);
         };
 
 	~Thruster(){};

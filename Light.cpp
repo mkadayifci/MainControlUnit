@@ -13,6 +13,7 @@ public:
 	Light(int outputPort){
           this->outputPort=outputPort;
           lightReference.attach(this->outputPort);
+          this->setValue(0);
         };
 
 	~Light(){};
