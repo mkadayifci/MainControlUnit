@@ -1,5 +1,6 @@
 #include "Servo.h"
-#include "light.cpp"
+#include "Light.cpp"
+#include "Thruster.cpp"
 
 Light* light;
 
