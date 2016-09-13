@@ -17,7 +17,10 @@ bool isStarted = false;
 
 void loop() {
 
-//  thruster->SetThrust(100);
+  Serial.println(random(500)); 
+  
+  delay(100);
+//  thruster->SetThrust(5);
   
 //
 //  light->SetBrightness(50);
