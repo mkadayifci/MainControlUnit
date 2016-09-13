@@ -17,7 +17,7 @@ bool isStarted = false;
 
 void loop() {
 
-  thruster->SetThrust(100);
+//  thruster->SetThrust(100);
   
 //
 //  light->SetBrightness(50);

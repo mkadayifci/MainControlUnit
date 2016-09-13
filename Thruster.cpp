@@ -11,8 +11,6 @@ private:
 public:
         static const int FULL_REVERSE_VALUE=-100;
         static const int FULL_FORWARD_VALUE= 100;
-        static const int SERVO_MIN_VALUE= 1100;
-        static const int SERVO_MAX_VALUE= 1900;
         
         static const int INIT_VALUE_IN_MICROSECONDS = 1500 ;
 

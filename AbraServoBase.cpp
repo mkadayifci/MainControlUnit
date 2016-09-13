@@ -11,6 +11,8 @@ private:
         int outputPort;
         int lastMicrosecondValue=0;
 public:
+        static const int SERVO_MIN_VALUE= 1100;
+        static const int SERVO_MAX_VALUE= 1900;
 
         int GetOutputPortNumber()
         {
