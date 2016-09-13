@@ -22,8 +22,8 @@ bool isStarted = false;
 void loop() {
 
 
-  communicator->SendRandomValue();
-  delay(100);
+  communicator->CheckMessages();
+//  delay(100);
 //  thruster->SetThrust(5);
   
 //

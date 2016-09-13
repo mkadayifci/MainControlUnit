@@ -20,7 +20,17 @@ public:
         
         void SendRandomValue()
         {
-          Serial.println(random(500)); 
+          //Serial.println(random(500)); 
+        }
+        
+        void CheckMessages()
+        {
+          if(Serial.available())
+          {
+            String message = Serial.readStringUntil('}');
+            Serial.println(message);
+          }
+
         }
 
 };
