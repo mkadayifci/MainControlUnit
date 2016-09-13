@@ -2,23 +2,27 @@
 #include "AbraServoBase.cpp"
 #include "Light.cpp"
 #include "Thruster.cpp"
+#include "UlakCommunicator.cpp"
+
 
 Light* light;
 Thruster* thruster;
+UlakCommunicator* communicator;
 
 void setup() {
   // initialize serial:
-  Serial.begin(9600);
+
   light=new Light(9);
   thruster=new Thruster(2);
+  communicator = new UlakCommunicator();
 }
 
 bool isStarted = false;
 
 void loop() {
 
-  Serial.println(random(500)); 
-  
+
+  communicator->SendRandomValue();
   delay(100);
 //  thruster->SetThrust(5);
   
